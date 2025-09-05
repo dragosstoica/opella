@@ -1,0 +1,560 @@
+ dgs-air opella-devops-challenge # terraform plan                                                                                                                              main
+Acquiring state lock. This may take a few moments...
+module.foundation.data.azurerm_client_config.current: Reading...
+data.azurerm_client_config.current: Reading...
+data.azurerm_client_config.current: Read complete after 0s [id=Y2xpZW50Q29uZmlncy9jbGllbnRJZD1mYjNiZTkxNS00Njk3LTRiOWQtYjgxMy1hYWJiNDViZTVjNzQ7b2JqZWN0SWQ9ZmExNjRmZDktMmNiOC00OWM2LThmMGQtZDg4NDQzMDRjYzAwO3N1YnNjcmlwdGlvbklkPTg3MGExZjExLThlYzUtNGRlNS1iMGY3LTVjYTZkOTJiMTk3Yjt0ZW5hbnRJZD1kNDExYzA5My1iZGNmLTQ4NjMtOWQyMC00ZmMwMGE2ZWMxZjk=]
+module.foundation.data.azurerm_client_config.current: Read complete after 0s [id=Y2xpZW50Q29uZmlncy9jbGllbnRJZD1mYjNiZTkxNS00Njk3LTRiOWQtYjgxMy1hYWJiNDViZTVjNzQ7b2JqZWN0SWQ9ZmExNjRmZDktMmNiOC00OWM2LThmMGQtZDg4NDQzMDRjYzAwO3N1YnNjcmlwdGlvbklkPTg3MGExZjExLThlYzUtNGRlNS1iMGY3LTVjYTZkOTJiMTk3Yjt0ZW5hbnRJZD1kNDExYzA5My1iZGNmLTQ4NjMtOWQyMC00ZmMwMGE2ZWMxZjk=]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # module.foundation.data.azurerm_firewall.firewalls["opellaeus2fw"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_firewall" "firewalls" {
+      + dns_proxy_enabled           = (known after apply)
+      + dns_servers                 = (known after apply)
+      + firewall_policy_id          = (known after apply)
+      + id                          = (known after apply)
+      + ip_configuration            = (known after apply)
+      + location                    = (known after apply)
+      + management_ip_configuration = (known after apply)
+      + name                        = "opellaeus2fw"
+      + resource_group_name         = "OPELLA-EUS-RG"
+      + sku_name                    = (known after apply)
+      + sku_tier                    = (known after apply)
+      + tags                        = (known after apply)
+      + threat_intel_mode           = (known after apply)
+      + virtual_hub                 = (known after apply)
+      + zones                       = (known after apply)
+    }
+
+  # module.foundation.data.azurerm_private_dns_zone.dns_zone["opellaeus2devakv"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_private_dns_zone" "dns_zone" {
+      + id                                                    = (known after apply)
+      + max_number_of_record_sets                             = (known after apply)
+      + max_number_of_virtual_network_links                   = (known after apply)
+      + max_number_of_virtual_network_links_with_registration = (known after apply)
+      + name                                                  = "privatelink.vaultcore.azure.net"
+      + number_of_record_sets                                 = (known after apply)
+      + resource_group_name                                   = "OPELLA-EUS2-RG"
+    }
+
+  # module.foundation.data.azurerm_private_dns_zone.dns_zone["opellaeus2prodakv1"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_private_dns_zone" "dns_zone" {
+      + id                                                    = (known after apply)
+      + max_number_of_record_sets                             = (known after apply)
+      + max_number_of_virtual_network_links                   = (known after apply)
+      + max_number_of_virtual_network_links_with_registration = (known after apply)
+      + name                                                  = "privatelink.vaultcore.azure.net"
+      + number_of_record_sets                                 = (known after apply)
+      + resource_group_name                                   = "OPELLA-EUS2-RG"
+    }
+
+  # module.foundation.data.azurerm_private_dns_zone.dns_zone["opellaeus2prodakv2"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_private_dns_zone" "dns_zone" {
+      + id                                                    = (known after apply)
+      + max_number_of_record_sets                             = (known after apply)
+      + max_number_of_virtual_network_links                   = (known after apply)
+      + max_number_of_virtual_network_links_with_registration = (known after apply)
+      + name                                                  = "privatelink.vaultcore.azure.net"
+      + number_of_record_sets                                 = (known after apply)
+      + resource_group_name                                   = "OPELLA-EUS2-RG"
+    }
+
+  # module.foundation.data.azurerm_resource_group.resource_group["OPELLA-EUS-RG"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_resource_group" "resource_group" {
+      + id         = (known after apply)
+      + location   = (known after apply)
+      + managed_by = (known after apply)
+      + name       = "OPELLA-EUS-RG"
+      + tags       = (known after apply)
+    }
+
+  # module.foundation.data.azurerm_subnet.akv_subnet["opellaeus2devakv"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_subnet" "akv_subnet" {
+      + address_prefix                                = (known after apply)
+      + address_prefixes                              = (known after apply)
+      + default_outbound_access_enabled               = (known after apply)
+      + id                                            = (known after apply)
+      + name                                          = "akvpesnet-001"
+      + network_security_group_id                     = (known after apply)
+      + private_endpoint_network_policies             = (known after apply)
+      + private_link_service_network_policies_enabled = (known after apply)
+      + resource_group_name                           = "OPELLA-EUS2-RG"
+      + route_table_id                                = (known after apply)
+      + service_endpoints                             = (known after apply)
+      + virtual_network_name                          = "opellaeus2vnet"
+    }
+
+  # module.foundation.data.azurerm_subnet.akv_subnet["opellaeus2prodakv1"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_subnet" "akv_subnet" {
+      + address_prefix                                = (known after apply)
+      + address_prefixes                              = (known after apply)
+      + default_outbound_access_enabled               = (known after apply)
+      + id                                            = (known after apply)
+      + name                                          = "akvpesnet-001"
+      + network_security_group_id                     = (known after apply)
+      + private_endpoint_network_policies             = (known after apply)
+      + private_link_service_network_policies_enabled = (known after apply)
+      + resource_group_name                           = "OPELLA-EUS2-RG"
+      + route_table_id                                = (known after apply)
+      + service_endpoints                             = (known after apply)
+      + virtual_network_name                          = "opellaeus2vnet"
+    }
+
+  # module.foundation.data.azurerm_subnet.akv_subnet["opellaeus2prodakv2"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_subnet" "akv_subnet" {
+      + address_prefix                                = (known after apply)
+      + address_prefixes                              = (known after apply)
+      + default_outbound_access_enabled               = (known after apply)
+      + id                                            = (known after apply)
+      + name                                          = "akvpesnet-001"
+      + network_security_group_id                     = (known after apply)
+      + private_endpoint_network_policies             = (known after apply)
+      + private_link_service_network_policies_enabled = (known after apply)
+      + resource_group_name                           = "OPELLA-EUS2-RG"
+      + route_table_id                                = (known after apply)
+      + service_endpoints                             = (known after apply)
+      + virtual_network_name                          = "opellaeus2vnet"
+    }
+
+  # module.foundation.data.azurerm_virtual_network.vnet["opellaeus2devakv"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_virtual_network" "vnet" {
+      + address_space           = (known after apply)
+      + dns_servers             = (known after apply)
+      + guid                    = (known after apply)
+      + id                      = (known after apply)
+      + location                = (known after apply)
+      + name                    = "opellaeus2vnet"
+      + resource_group_name     = "OPELLA-EUS2-RG"
+      + subnets                 = (known after apply)
+      + tags                    = (known after apply)
+      + vnet_peerings           = (known after apply)
+      + vnet_peerings_addresses = (known after apply)
+    }
+
+  # module.foundation.data.azurerm_virtual_network.vnet["opellaeus2prodakv1"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_virtual_network" "vnet" {
+      + address_space           = (known after apply)
+      + dns_servers             = (known after apply)
+      + guid                    = (known after apply)
+      + id                      = (known after apply)
+      + location                = (known after apply)
+      + name                    = "opellaeus2vnet"
+      + resource_group_name     = "OPELLA-EUS2-RG"
+      + subnets                 = (known after apply)
+      + tags                    = (known after apply)
+      + vnet_peerings           = (known after apply)
+      + vnet_peerings_addresses = (known after apply)
+    }
+
+  # module.foundation.data.azurerm_virtual_network.vnet["opellaeus2prodakv2"] will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_virtual_network" "vnet" {
+      + address_space           = (known after apply)
+      + dns_servers             = (known after apply)
+      + guid                    = (known after apply)
+      + id                      = (known after apply)
+      + location                = (known after apply)
+      + name                    = "opellaeus2vnet"
+      + resource_group_name     = "OPELLA-EUS2-RG"
+      + subnets                 = (known after apply)
+      + tags                    = (known after apply)
+      + vnet_peerings           = (known after apply)
+      + vnet_peerings_addresses = (known after apply)
+    }
+
+  # module.foundation.azurerm_firewall.firewalls["opellaeus2fw"] will be created
+  + resource "azurerm_firewall" "firewalls" {
+      + dns_proxy_enabled   = (known after apply)
+      + firewall_policy_id  = (known after apply)
+      + id                  = (known after apply)
+      + location            = "eastus2"
+      + name                = "opellaeus2fw"
+      + resource_group_name = "OPELLA-EUS-RG"
+      + sku_name            = "AZFW_VNet"
+      + sku_tier            = "Premium"
+      + threat_intel_mode   = (known after apply)
+
+      + ip_configuration {
+          + name                 = "opellaeus2fw-AzureFirewallSubnet"
+          + private_ip_address   = (known after apply)
+          + public_ip_address_id = (known after apply)
+          + subnet_id            = (known after apply)
+        }
+    }
+
+  # module.foundation.azurerm_firewall_policy.parent["opellaeus2fw"] will be created
+  + resource "azurerm_firewall_policy" "parent" {
+      + child_policies           = (known after apply)
+      + firewalls                = (known after apply)
+      + id                       = (known after apply)
+      + location                 = "eastus2"
+      + name                     = "opellaeus2fw-parent-policy"
+      + resource_group_name      = "OPELLA-EUS-RG"
+      + rule_collection_groups   = (known after apply)
+      + sku                      = "Premium"
+      + threat_intelligence_mode = "Alert"
+
+      + dns {
+          + proxy_enabled = true
+          + servers       = []
+        }
+
+      + intrusion_detection {
+          + mode = "Alert"
+        }
+    }
+
+  # module.foundation.azurerm_firewall_policy_rule_collection_group.network["opellaeus2fw"] will be created
+  + resource "azurerm_firewall_policy_rule_collection_group" "network" {
+      + firewall_policy_id = (known after apply)
+      + id                 = (known after apply)
+      + name               = "fwpolicy-rcg"
+      + priority           = 100
+
+      + network_rule_collection {
+          + action   = "Allow"
+          + name     = "network_rule_collection1"
+          + priority = 400
+
+          + rule {
+              + destination_addresses = [
+                  + "10.0.0.64/26",
+                ]
+              + destination_ports     = [
+                  + "443",
+                ]
+              + name                  = "0"
+              + protocols             = [
+                  + "TCP",
+                  + "UDP",
+                ]
+              + source_addresses      = [
+                  + "10.0.0.0/22",
+                ]
+            }
+        }
+    }
+
+  # module.foundation.azurerm_key_vault.datalib_key_vault["opellaeus2devakv"] will be created
+  + resource "azurerm_key_vault" "datalib_key_vault" {
+      + access_policy                 = (known after apply)
+      + enable_rbac_authorization     = (known after apply)
+      + id                            = (known after apply)
+      + location                      = "eastus2"
+      + name                          = "opellaeus2devakv"
+      + public_network_access_enabled = true
+      + rbac_authorization_enabled    = (known after apply)
+      + resource_group_name           = "OPELLA-EUS-RG"
+      + sku_name                      = "standard"
+      + soft_delete_retention_days    = 90
+      + tenant_id                     = "2fc13e34-f03f-498b-982a-7cb446e25bc6"
+      + vault_uri                     = (known after apply)
+
+      + contact (known after apply)
+
+      + network_acls {
+          + bypass         = "AzureServices"
+          + default_action = "Allow"
+        }
+    }
+
+  # module.foundation.azurerm_key_vault.datalib_key_vault["opellaeus2prodakv1"] will be created
+  + resource "azurerm_key_vault" "datalib_key_vault" {
+      + access_policy                 = (known after apply)
+      + enable_rbac_authorization     = (known after apply)
+      + id                            = (known after apply)
+      + location                      = "eastus2"
+      + name                          = "opellaeus2prodakv1"
+      + public_network_access_enabled = true
+      + rbac_authorization_enabled    = (known after apply)
+      + resource_group_name           = "OPELLA-EUS-RG"
+      + sku_name                      = "standard"
+      + soft_delete_retention_days    = 90
+      + tenant_id                     = "2fc13e34-f03f-498b-982a-7cb446e25bc6"
+      + vault_uri                     = (known after apply)
+
+      + contact (known after apply)
+
+      + network_acls {
+          + bypass         = "AzureServices"
+          + default_action = "Allow"
+        }
+    }
+
+  # module.foundation.azurerm_key_vault.datalib_key_vault["opellaeus2prodakv2"] will be created
+  + resource "azurerm_key_vault" "datalib_key_vault" {
+      + access_policy                 = (known after apply)
+      + enable_rbac_authorization     = (known after apply)
+      + id                            = (known after apply)
+      + location                      = "eastus2"
+      + name                          = "opellaeus2prodakv2"
+      + public_network_access_enabled = true
+      + rbac_authorization_enabled    = (known after apply)
+      + resource_group_name           = "OPELLA-EUS-RG"
+      + sku_name                      = "standard"
+      + soft_delete_retention_days    = 90
+      + tenant_id                     = "2fc13e34-f03f-498b-982a-7cb446e25bc6"
+      + vault_uri                     = (known after apply)
+
+      + contact (known after apply)
+
+      + network_acls {
+          + bypass         = "AzureServices"
+          + default_action = "Allow"
+        }
+    }
+
+  # module.foundation.azurerm_private_dns_zone.pdns["privatelink.vaultcore.azure.net"] will be created
+  + resource "azurerm_private_dns_zone" "pdns" {
+      + id                                                    = (known after apply)
+      + max_number_of_record_sets                             = (known after apply)
+      + max_number_of_virtual_network_links                   = (known after apply)
+      + max_number_of_virtual_network_links_with_registration = (known after apply)
+      + name                                                  = "privatelink.vaultcore.azure.net"
+      + number_of_record_sets                                 = (known after apply)
+      + resource_group_name                                   = "OPELLA-EUS-RG"
+
+      + soa_record (known after apply)
+    }
+
+  # module.foundation.azurerm_private_dns_zone_virtual_network_link.pdnsl_hub["privatelink.vaultcore.azure.net"] will be created
+  + resource "azurerm_private_dns_zone_virtual_network_link" "pdnsl_hub" {
+      + id                    = (known after apply)
+      + name                  = "vnet-link"
+      + private_dns_zone_name = "privatelink.vaultcore.azure.net"
+      + registration_enabled  = false
+      + resolution_policy     = (known after apply)
+      + resource_group_name   = "OPELLA-EUS-RG"
+      + virtual_network_id    = (known after apply)
+    }
+
+  # module.foundation.azurerm_private_endpoint.pe1["opellaeus2devakv"] will be created
+  + resource "azurerm_private_endpoint" "pe1" {
+      + custom_dns_configs       = (known after apply)
+      + id                       = (known after apply)
+      + location                 = "eastus2"
+      + name                     = "opellaeus2devakvpe"
+      + network_interface        = (known after apply)
+      + private_dns_zone_configs = (known after apply)
+      + resource_group_name      = "OPELLA-EUS-RG"
+      + subnet_id                = (known after apply)
+
+      + private_dns_zone_group {
+          + id                   = (known after apply)
+          + name                 = "privatelink.vaultcore.azure.net"
+          + private_dns_zone_ids = (known after apply)
+        }
+
+      + private_service_connection {
+          + is_manual_connection           = false
+          + name                           = "opellaeus2devakvpsc"
+          + private_connection_resource_id = (known after apply)
+          + private_ip_address             = (known after apply)
+          + subresource_names              = [
+              + "vault",
+            ]
+        }
+    }
+
+  # module.foundation.azurerm_private_endpoint.pe1["opellaeus2prodakv1"] will be created
+  + resource "azurerm_private_endpoint" "pe1" {
+      + custom_dns_configs       = (known after apply)
+      + id                       = (known after apply)
+      + location                 = "eastus2"
+      + name                     = "opellaeus2prodakv1pe"
+      + network_interface        = (known after apply)
+      + private_dns_zone_configs = (known after apply)
+      + resource_group_name      = "OPELLA-EUS-RG"
+      + subnet_id                = (known after apply)
+
+      + private_dns_zone_group {
+          + id                   = (known after apply)
+          + name                 = "privatelink.vaultcore.azure.net"
+          + private_dns_zone_ids = (known after apply)
+        }
+
+      + private_service_connection {
+          + is_manual_connection           = false
+          + name                           = "opellaeus2prodakv1psc"
+          + private_connection_resource_id = (known after apply)
+          + private_ip_address             = (known after apply)
+          + subresource_names              = [
+              + "vault",
+            ]
+        }
+    }
+
+  # module.foundation.azurerm_private_endpoint.pe1["opellaeus2prodakv2"] will be created
+  + resource "azurerm_private_endpoint" "pe1" {
+      + custom_dns_configs       = (known after apply)
+      + id                       = (known after apply)
+      + location                 = "eastus2"
+      + name                     = "opellaeus2prodakv2pe"
+      + network_interface        = (known after apply)
+      + private_dns_zone_configs = (known after apply)
+      + resource_group_name      = "OPELLA-EUS-RG"
+      + subnet_id                = (known after apply)
+
+      + private_dns_zone_group {
+          + id                   = (known after apply)
+          + name                 = "privatelink.vaultcore.azure.net"
+          + private_dns_zone_ids = (known after apply)
+        }
+
+      + private_service_connection {
+          + is_manual_connection           = false
+          + name                           = "opellaeus2prodakv2psc"
+          + private_connection_resource_id = (known after apply)
+          + private_ip_address             = (known after apply)
+          + subresource_names              = [
+              + "vault",
+            ]
+        }
+    }
+
+  # module.foundation.azurerm_public_ip.firewalls["opellaeus2fw"] will be created
+  + resource "azurerm_public_ip" "firewalls" {
+      + allocation_method       = "Static"
+      + ddos_protection_mode    = "VirtualNetworkInherited"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus2"
+      + name                    = "opellaeus2fw-pip"
+      + resource_group_name     = "OPELLA-EUS-RG"
+      + sku                     = "Standard"
+      + sku_tier                = "Regional"
+    }
+
+  # module.foundation.azurerm_resource_group.resource_group["OPELLA-EUS-RG"] will be created
+  + resource "azurerm_resource_group" "resource_group" {
+      + id       = (known after apply)
+      + location = "eastus2"
+      + name     = "OPELLA-EUS-RG"
+    }
+
+  # module.foundation.azurerm_route_table.route_tables["opelladevvnetudr"] will be created
+  + resource "azurerm_route_table" "route_tables" {
+      + bgp_route_propagation_enabled = true
+      + id                            = (known after apply)
+      + location                      = "eastus2"
+      + name                          = "opelladevvnetudr"
+      + resource_group_name           = "OPELLA-EUS-RG"
+      + route                         = [
+          + {
+              + address_prefix         = "0.0.0.0/0"
+              + name                   = "default-route"
+              + next_hop_in_ip_address = "10.0.0.4"
+              + next_hop_type          = "VirtualAppliance"
+            },
+        ]
+      + subnets                       = (known after apply)
+    }
+
+  # module.foundation.azurerm_subnet.networks["opellaeus2vnet-AzureFirewallSubnet"] will be created
+  + resource "azurerm_subnet" "networks" {
+      + address_prefixes                              = [
+          + "10.0.0.0/26",
+        ]
+      + default_outbound_access_enabled               = true
+      + id                                            = (known after apply)
+      + name                                          = "AzureFirewallSubnet"
+      + private_endpoint_network_policies             = "Disabled"
+      + private_link_service_network_policies_enabled = true
+      + resource_group_name                           = "OPELLA-EUS-RG"
+      + virtual_network_name                          = "opellaeus2vnet"
+    }
+
+  # module.foundation.azurerm_subnet.networks["opellaeus2vnet-akvpesnet-001"] will be created
+  + resource "azurerm_subnet" "networks" {
+      + address_prefixes                              = [
+          + "10.0.0.64/26",
+        ]
+      + default_outbound_access_enabled               = true
+      + id                                            = (known after apply)
+      + name                                          = "akvpesnet-001"
+      + private_endpoint_network_policies             = "Disabled"
+      + private_link_service_network_policies_enabled = false
+      + resource_group_name                           = "OPELLA-EUS-RG"
+      + service_endpoints                             = [
+          + "Microsoft.KeyVault",
+        ]
+      + virtual_network_name                          = "opellaeus2vnet"
+    }
+
+  # module.foundation.azurerm_subnet.networks["opellaeus2vnet-vmsnet-001"] will be created
+  + resource "azurerm_subnet" "networks" {
+      + address_prefixes                              = [
+          + "10.0.0.128/27",
+        ]
+      + default_outbound_access_enabled               = true
+      + id                                            = (known after apply)
+      + name                                          = "vmsnet-001"
+      + private_endpoint_network_policies             = "Disabled"
+      + private_link_service_network_policies_enabled = true
+      + resource_group_name                           = "OPELLA-EUS-RG"
+      + virtual_network_name                          = "opellaeus2vnet"
+    }
+
+  # module.foundation.azurerm_subnet_route_table_association.route_tables["opellaeus2vnet-akvpesnet-001"] will be created
+  + resource "azurerm_subnet_route_table_association" "route_tables" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.foundation.azurerm_subnet_route_table_association.route_tables["opellaeus2vnet-vmsnet-001"] will be created
+  + resource "azurerm_subnet_route_table_association" "route_tables" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.foundation.azurerm_virtual_network.networks["opellaeus2vnet"] will be created
+  + resource "azurerm_virtual_network" "networks" {
+      + address_space                  = [
+          + "10.0.0.0/22",
+        ]
+      + dns_servers                    = []
+      + guid                           = (known after apply)
+      + id                             = (known after apply)
+      + location                       = "eastus2"
+      + name                           = "opellaeus2vnet"
+      + private_endpoint_vnet_policies = "Disabled"
+      + resource_group_name            = "OPELLA-EUS-RG"
+      + subnet                         = (known after apply)
+    }
+
+Plan: 20 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + test = {
+      + dns_resources_output = {
+          + "privatelink.vaultcore.azure.net" = {
+              + resource_group_name = "OPELLA-EUS-RG"
+              + vnet_name           = "opellaeus2vnet"
+            }
+        }
+    }
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+Releasing state lock. This may take a few moments...
+ dgs-air opella-devops-challenge #
