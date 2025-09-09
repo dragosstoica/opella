@@ -6,13 +6,15 @@ locals {
         resource_group_name = local.default_resource_group.name
         location            = local.default_resource_group.location
         tenant_id           = "2fc13e34-f03f-498b-982a-7cb446e25bc6"
-        dns_rg_name         = "OPELLA-EUS2-RG"
+        dns_rg_name         = "OPELLA-EUS-RG"
         akv_snet_name       = "akvpesnet-001"
       },
       v
     )
   }
 }
+
+data "azurerm_client_config" "current" {}
 
 data "azurerm_virtual_network" "vnet" {
   for_each            = local.akv
@@ -35,7 +37,8 @@ resource "azurerm_key_vault" "datalib_key_vault" {
   name                 = each.value.key_vault_name
   location             = each.value.location
   resource_group_name  = each.value.resource_group_name
-  tenant_id            = each.value.tenant_id
+  #tenant_id            = each.value.tenant_id
+  tenant_id            = data.azurerm_client_config.current.tenant_id
   sku_name             = "standard"
   network_acls {
     default_action = "Allow"

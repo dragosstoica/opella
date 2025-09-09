@@ -1,29 +1,36 @@
 foundation:
   resource_groups:
     - name: OPELLA-EUS-RG
-      location: eastus2
+      location: eastus
       is_default: true
   networks:
-    opellaeus2vnet:
+    opellaeusvnet:
       use_inline_subnets: true
       address_space:
         - 10.0.0.0/22
       subnets:
-        AzureFirewallSubnet:
+        azurefirewallnet:
           address_prefixes:
             - 10.0.0.0/26
           service_endpoints: []
           delegations: []
-        akvpesnet-001:
+        akvpesnet:
           address_prefixes:
             - 10.0.0.64/26
           service_endpoints:
             - Microsoft.KeyVault
           delegations: []
           enforce_private_link_endpoint_network_policies: false
-        vmsnet-001:
+        sapesnet:
           address_prefixes:
             - 10.0.0.128/27
+          service_endpoints:
+            - Microsoft.Storage
+          delegations: []
+          enforce_private_link_endpoint_network_policies: false
+        vmsnet:
+          address_prefixes:
+            - 10.0.0.160/27
           service_endpoints: []
           delegations: []
   route_tables:
@@ -34,13 +41,14 @@ foundation:
           next_hop_in_ip_address: 10.0.0.4
           next_hop_type: VirtualAppliance
       subnet_associations:
-        - network: opellaeus2vnet
+        - network: opellaeusvnet
           subnets:
-            - akvpesnet-001
-            - vmsnet-001
+            - akvpesnet
+            - sapesnet
+            - vmsnet
   firewalls:
-    opellaeus2fw:
-      network: opellaeus2vnet
+    opellaeusfw:
+      network: opellaeusvnet
       dns_servers: []
       network_rule_collections:
         - name: traffic_to_akv
@@ -54,16 +62,47 @@ foundation:
           protocols:
             - TCP
             - UDP
+        - name: traffic_to_sa
+          source_addresses:
+            - 10.0.0.0/22
+          destination_ports:
+            - "*"
+          destination_addresses:
+            - 10.0.0.128/27
+          destination_ip_groups: []
+          protocols:
+            - TCP
+            - UDP
   akv:
-    - key_vault_name: opellaeus2devakv
-      virtual_network_name: opellaeus2vnet
-      vnet_resource_group_name: OPELLA-EUS2-RG
-    - key_vault_name: opellaeus2prodakv1
-      virtual_network_name: opellaeus2vnet
-      vnet_resource_group_name: OPELLA-EUS2-RG
-    - key_vault_name: opellaeus2prodakv2
-      virtual_network_name: opellaeus2vnet
-      vnet_resource_group_name: OPELLA-EUS2-RG
+    - key_vault_name: opellaeusdevakv
+      virtual_network_name: opellaeusvnet
+      vnet_resource_group_name: OPELLA-EUS-RG
+    - key_vault_name: opellaeusprodakv1
+      virtual_network_name: opellaeusvnet
+      vnet_resource_group_name: OPELLA-EUS-RG
+    - key_vault_name: opellaeusprodakv2
+      virtual_network_name: opellaeusvnet
+      vnet_resource_group_name: OPELLA-EUS-RG
+  sas:
+    opellaeussa001:
+      access_tier: Hot
+      account_kind: StorageV2
+      account_replication_type: LRS
+      account_tier: Standard
+      storage_allow_blob_public_access: true
+      enable_https_traffic_only: true
+      storage_is_hns_enabled: true
+      network_rules:
+        default_action: Deny
+        ip_rules:
+          - 82.76.234.94
+        virtual_network_subnet_ids:
+          - opellaeusvnet/sapesnet
+      containers:
+        opellaeuscontainer001:
+          container_access_type: private
+        opellaeuscontainer002:
+          container_access_type: blob
   dns_resources:
     privatelink.vaultcore.azure.net:
-      vnet_name: opellaeus2vnet
+      vnet_name: opellaeusvnet
