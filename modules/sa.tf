@@ -45,9 +45,7 @@ resource "azurerm_storage_account" "sas" {
   account_replication_type = each.value.account_replication_type
   is_hns_enabled           = each.value.storage_is_hns_enabled
   network_rules {
-    default_action             = each.value.network_rules.default_action
-    ip_rules                   = each.value.network_rules.ip_rules
-    virtual_network_subnet_ids = each.value.network_rules.virtual_network_subnet_ids
+    default_action             = "Allow"
   }
 identity {
     type = "SystemAssigned"
