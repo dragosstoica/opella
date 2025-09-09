@@ -49,12 +49,3 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
-
-    - name: Render terraform docs inside the README.md and push changes back to PR branch
-      uses: terraform-docs/gh-actions@v1.4.1
-      with:
-        working-dir: .
-        recursive: true
-        output-file: README.md
-        output-method: inject
-        git-push: "true"
